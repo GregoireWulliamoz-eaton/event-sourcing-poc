@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  eventsourcing:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__Marten=Host=database;Port=5432;Database=event-sourcing;Username=admin;Password=password
+    ports:
+      - "8080"

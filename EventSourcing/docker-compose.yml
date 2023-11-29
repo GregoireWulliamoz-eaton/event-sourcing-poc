@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  eventsourcing:
+    image: ${DOCKER_REGISTRY-}eventsourcing
+    build:
+      context: .
+      dockerfile: EventSourcing/Dockerfile
+    depends_on:
+       - database
+  database:
+    image: "postgres:latest"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin 
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=event-sourcing
